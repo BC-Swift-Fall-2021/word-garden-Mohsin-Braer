@@ -28,17 +28,42 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let text = wordGuessText.text!;
+        guessLetterButton.isEnabled = !(text.isEmpty);
+        
+        
+    }
+    
+    
+    @IBAction func guessedLetterFieldChanged(_ sender: UITextField) {
+        let text = wordGuessText.text!;
+        guessLetterButton.isEnabled = !(text.isEmpty);
+        
+    }
+    
+    
+    @IBAction func doneKeyPressed(_ sender: UITextField) {
+                
+        updateUIAfterGuess();
         
     }
     
     
     @IBAction func guessLetterButtonPressed(_ sender: UIButton) {
+                
+        updateUIAfterGuess();
         
     }
     
     
     @IBAction func playAgainButtonPressed(_ sender: UIButton) {
         
+    }
+    
+    func updateUIAfterGuess() {
+        wordGuessText.resignFirstResponder();
+        wordGuessText.text! = "";
+        guessLetterButton.isEnabled = false;
     }
     
 }
